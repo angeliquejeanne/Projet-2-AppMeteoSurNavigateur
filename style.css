@@ -1,0 +1,112 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    background: linear-gradient(to top, #fcfcac, #000035);
+    height: 100vh;
+}
+
+.container {
+    width: 800px;
+    height: 600px;
+    background: linear-gradient(to bottom, #000035, #fcfcac);
+    display: grid;
+    grid-template: 100px 300px 100px 100px / repeat(8, 100px);
+    margin: 100px auto 0;
+    position: relative;
+    border: 3px solid black;
+}
+
+h1 {
+    /* deb row / deb col / fin row / fin col */
+    grid-area: 1 / 1 / 2 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid black;
+    color: snow;
+}
+
+.block-logo-informations {
+    grid-area: 2 / 1 / 3 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.block-logo {
+    width: 50%;
+}
+.block-logo img {
+    width: 100%;
+    height: auto;
+}
+.block-info {
+    width: 50%;
+}
+.block-info .weather {
+    font-size: 40px;
+}
+.block-info .weather::first-letter {
+    text-transform: capitalize;
+}
+.block-info .temperature {
+    font-size: 60px;
+}
+.block-info .localisation {
+    font-size: 40px;
+    word-wrap: break-word;
+}
+
+.hours-block-prev {
+    grid-area: 3 / 1 / 4 / -1;
+}
+.day-block-prev {
+    grid-area: 4 / 1 / 5 / -1;
+}
+.day-block-prev, .hours-block-prev {
+    display: grid;
+    grid-template: 100px / repeat(7, 1fr);
+}
+
+.hours-block, .block-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-top: 3px solid black;
+    font-size: 21px;
+}
+
+.hours-block:not(:last-child), .block-day:not(:last-child) {
+    border-right: 3px solid black;
+}
+
+.hours-block p, .block-day p {
+    margin: 5px;
+}
+
+/* Animation chargement */
+
+.overlay-icon-chargement {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #fcfcac, #000035);
+    transition: opacity 1.3s ease-out;
+    z-index: 1000;
+}
+.overlay-icon-chargement img {
+    width: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.disparition {
+    opacity: 0;
+}
